@@ -22,6 +22,8 @@ class Game
     if (player.lives == 0)
       @game_over = game_over(player)
     end
+
+    @player1_turn = !@player1_turn
   end
 
   def game_over?(player)
