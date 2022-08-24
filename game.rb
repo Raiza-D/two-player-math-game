@@ -6,6 +6,10 @@ class Game
     @player1_turn = true
   end
 
+  # Asks math question with randomly-generated two numbers between 0 to 20
+  # Checks user input if correct against answer
+  # Checks current player's lives remaining
+  # Switches off player1's turn so player2 can play, alternates.
   def game_question(player)
     @first_num = rand(20)
     @second_num = rand(20)
@@ -27,11 +31,6 @@ class Game
     @player1_turn = !@player1_turn
   end
 
-  def game_over(player)
-    puts "Game over. #{player.name} loses. #{@player2.name} wins!"
-    return true
-  end
-
   def start_game
     puts "----- GOOD LUCK! -----"
     while !@game_over
@@ -41,6 +40,21 @@ class Game
         self.game_question(@player2)
       end
       puts "#{@player1.name} #{@player1.lives}/3 VS. #{@player2.name} #{@player2.lives}/3"
+      self.game_status
     end
   end
+
+  def game_over(player)
+    puts "Game over. #{player.name} loses. #{@player2.name} wins."
+    return true
+  end
+  
+  def game_status
+    if !@game_over
+      puts "----- NEW TURN -----"
+    else
+      puts "----- GAME OVER -----"
+    end
+  end
+
 end
