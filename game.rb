@@ -6,25 +6,27 @@ class Game
     @player1_turn = true
   end
 
+  # Loop through game. Checks status at end of each turn.
   def start_game
     puts "----- GOOD LUCK! -----"
     while !@game_over
       if (@player1_turn)
-        self.game_question(@player1)
+        self.question(@player1)
       else
-        self.game_question(@player2)
+        self.question(@player2)
       end
+
       puts "#{@player1.name} #{@player1.lives}/3 VS. #{@player2.name} #{@player2.lives}/3"
+
       self.game_status
     end
   end
-
 
   # Asks math question with randomly-generated two numbers between 0 to 20
   # Checks user input if correct against answer
   # Checks current player's lives remaining
   # Switches off player1's turn so player2 can play, alternates.
-  def game_question(player)
+  def question(player)
     @first_num = rand(20)
     @second_num = rand(20)
 
@@ -45,7 +47,8 @@ class Game
     @player1_turn = !@player1_turn
   end
 
-  
+  # If a player has no lives remaining, method prints and returns true.
+  # 'true' value updates @game_over variable's value
   def game_over(player)
     puts "Game over. #{player.name} loses."
     return true
