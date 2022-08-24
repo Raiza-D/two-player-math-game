@@ -1,6 +1,15 @@
 require "./player.rb"
 require "./game.rb"
 
+puts "Player 1 - Enter your name: "
+player_one_name = gets.chomp
+player1 = Player.new(player_one_name)
+
+puts "Player 2 - Enter your name: "
+player_two_name = gets.chomp
+player2 = Player.new(player_two_name)
+
+
 # Question
 puts "What does 5 plus 3 equal?"
 
