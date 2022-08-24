@@ -14,7 +14,7 @@ class Game
     @answer = gets.chomp.to_i
 
     if (@first_num + @second_num == @answer)
-      puts "Correct, you're a math genius!"
+      puts "Correct, #{player.name} you're a math genius!"
     else
       puts "Seriously? That's incorrect."
       player.lives -= 1
@@ -28,12 +28,12 @@ class Game
   end
 
   def game_over(player)
-    puts "Game over. #{player.name} lost."
+    puts "Game over. #{player.name} loses. #{@player2.name} wins!"
     return true
   end
 
   def start_game
-    puts "----- New Game ----- "
+    puts "----- GOOD LUCK! -----"
     while !@game_over
       if (@player1_turn)
         self.game_question(@player1)
