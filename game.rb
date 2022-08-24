@@ -17,6 +17,7 @@ class Game
       puts "Correct, you're a math genius!"
     else
       puts "Seriously? That's incorrect."
+      player.lives -= 1
     end
 
     if (player.lives == 0)
@@ -26,8 +27,9 @@ class Game
     @player1_turn = !@player1_turn
   end
 
-  def game_over?(player)
+  def game_over(player)
     puts "Game over. #{player.name} lost."
+    return true
   end
 
   def start_game
