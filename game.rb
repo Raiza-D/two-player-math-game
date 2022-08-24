@@ -27,8 +27,9 @@ class Game
     @player1_turn = !@player1_turn
   end
 
-  def game_over?(player)
+  def game_over(player)
     puts "Game over. #{player.name} lost."
+    return true
   end
 
   def start_game
