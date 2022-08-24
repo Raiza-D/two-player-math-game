@@ -10,7 +10,7 @@ class Game
     @first_num = rand(20)
     @second_num = rand(20)
 
-    puts "#{player.name}: What is #{first_num} plus #{second_num}?"
+    puts "#{player.name}: What is #{@first_num} plus #{@second_num}?"
     @answer = gets.chomp.to_i
 
     if (@first_num + @second_num == @answer)
@@ -30,4 +30,15 @@ class Game
     puts "Game over. #{player.name} lost."
   end
 
+  def start_game
+    puts "----- New Game ----- "
+    while !@game_over
+      if (@player1_turn)
+        self.game_question(@player1)
+      else
+        self.game_question(@player2)
+      end
+      puts "#{@player1.name} #{@player1.lives}/3 VS. #{@player2.name} #{@player2.lives}/3"
+    end
+  end
 end
